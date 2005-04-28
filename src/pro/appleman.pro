@@ -90,6 +90,7 @@ for i = 0, iter-1 do begin
     if whereIn[0] eq -1 then break
 
     valArr = valArr[ whereIn]
+
     constArr = constArr[ whereIn]
 
     if whereOut[0] ne -1 then begin
