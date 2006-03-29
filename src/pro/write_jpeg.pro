@@ -63,7 +63,7 @@ pro write_jpeg, filename, image,$
 ;
 ;-
 
-
+rgb=1
 if(keyword_set(unit)) then message, "UNIT not supported"
 
 if(keyword_set(unit)) then begin
@@ -80,11 +80,6 @@ if(keyword_set(TRUE)) then begin
 endif
 
 n=size(image, /n_dimensions)
-
-if n ne 2 then begin
-    message, "Array must have 2 dimensions."
-endif
-
 s=size(image,/dimensions)
 q=75
 

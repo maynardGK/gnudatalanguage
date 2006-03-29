@@ -52,7 +52,7 @@ pro write_pict, filename, image,red, green, blue
 ;
 ;-
 
-
+rgb=1
 n=size(image, /n_dimensions)
 s=size(image,/dimensions)
 
