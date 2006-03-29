@@ -80,6 +80,11 @@ if(keyword_set(TRUE)) then begin
 endif
 
 n=size(image, /n_dimensions)
+
+if n ne 2 then begin
+    message, "Array must have 2 dimensions."
+endif
+
 s=size(image,/dimensions)
 q=75
 
