@@ -77,9 +77,8 @@ if(keyword_set(buffer)) then Message, "Keyword BUFFER not supported"
 
 
 if(not keyword_set(unit)) then mid=magick_open(filename)
-help,mid
-;;DITHER if necessary
 
+;;DITHER if necessary
 if(keyword_set(GRAYSCALE)) then begin
     magick_quantize, mid,/GRAYSCALE
 endif else if(keyword_set(COLORS)) then begin
@@ -105,7 +104,8 @@ endelse
 
 ; if 16-bit (unsigned short int) image convert to byte
 sz = size(image)
-if (sz[1] eq 3) then begin
+type = sz[sz[0]+1]
+if (type eq 2 or type eq 12) then begin
     print, 'Converting 16-bit image to byte'
     image = image / 256
     image = byte(image)
