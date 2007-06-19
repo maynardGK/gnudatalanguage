@@ -58,7 +58,7 @@ void GDLStream::Open( const string& name_,
   if( fStream == NULL)
     fStream = new fstream();
   else if( fStream->is_open())
-    throw GDLException("File unit is already open.");
+    throw GDLIOException("File unit is already open.");
 
   fStream->open( name_.c_str(), mode_);
 
@@ -191,25 +191,25 @@ igzstream& GDLStream::IgzStream()
 fstream& GDLStream::IStream()
 {
   if( fStream == NULL || !fStream->is_open()) 
-    throw GDLException("File unit is not open.");
+    throw GDLIOException("File unit is not open.");
   if( !(mode & ios::in))
-    throw GDLException("File unit is not open for reading.");
+    throw GDLIOException("File unit is not open for reading.");
   return *fStream;
 }
 
 fstream& GDLStream::OStream()
 {
   if( fStream == NULL || !fStream->is_open()) 
-    throw GDLException("File unit is not open.");
+    throw GDLIOException("File unit is not open.");
   if( !(mode & ios::out))
-    throw GDLException("File unit is not open for writing.");
+    throw GDLIOException("File unit is not open for writing.");
   return *fStream;
 }
 
 istringstream& GDLStream::ISocketStream()
 {
   if( iSocketStream == NULL) 
-    throw GDLException("Socket unit is not open.");
+    throw GDLIOException("Socket unit is not open.");
   return *iSocketStream;
 }
 
