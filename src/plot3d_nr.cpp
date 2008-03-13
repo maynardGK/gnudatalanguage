@@ -217,7 +217,7 @@ plgrid3(PLFLT tick)
     zmin = (zmax_in > zmin_in) ? zmin_in: zmax_in;
     zmax = (zmax_in > zmin_in) ? zmax_in: zmin_in;
 
-    pldtik(zmin, zmax, &tick, &nsub);//, FALSE);
+    pldtik(zmin, zmax, &tick, &nsub, FALSE);
     tp = tick * floor(zmin / tick) + tick;
     pl3upv = 0;
 
