@@ -10,6 +10,10 @@
 
 #include <antlr/config.hpp>
 
+// g++-4.3 needs this
+#include <cstring>
+#include <cstdlib>
+
 #include <map>
 
 #ifdef HAS_NOT_CCTYPE_H
