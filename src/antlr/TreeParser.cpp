@@ -5,6 +5,9 @@
  * $Id$
  */
 
+// g++-4.3 needs this
+#include <cstdlib>
+
 #include "antlr/TreeParser.hpp"
 #include "antlr/ASTNULLType.hpp"
 #include "antlr/MismatchedTokenException.hpp"
