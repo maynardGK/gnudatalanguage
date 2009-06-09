@@ -143,6 +143,14 @@ void GDLStream::Socket( const string& host,
   width = 32768;
 }
 
+void GDLStream::Flush() 
+{ 
+  if( fStream != NULL)
+    {
+      fStream->flush();
+    }
+}
+
 void GDLStream::Close() 
 { 
   if( fStream != NULL)
