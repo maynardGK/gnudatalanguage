@@ -62,7 +62,7 @@ function read_xwd, filename, red, green, blue
 mid=magick_open(filename)
 
 print, magick_IndexedColor(mid)
-if(magick_IndexedColor(mid)) thaen begin
+if(magick_IndexedColor(mid)) then begin
     image=magick_readIndexes(mid)
     magick_readcolormapRGB,mid,red,green,blue
 endif else begin
