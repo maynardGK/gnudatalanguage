@@ -14,6 +14,9 @@
 #include <cstring>
 #include <cstdlib>
 
+// g++-4.4 needs this
+#include <cstdio>
+
 #include <map>
 
 #ifdef HAS_NOT_CCTYPE_H
