@@ -42,6 +42,8 @@ namespace GZSTREAM_NAMESPACE {
 // Internal classes to implement gzstream. See below for user classes.
 // ----------------------------------------------------------------------------
 
+const int buf4 = 2;
+
 class gzstreambuf : public std::streambuf {
 private:
     static const int bufferSize = 47+256;    // size of data buff
@@ -56,9 +58,10 @@ private:
 public:
     gzstreambuf() : opened(0) {
         setp( buffer, buffer + (bufferSize-1));
-        setg( buffer + 4,     // beginning of putback area
-              buffer + 4,     // read position
-              buffer + 4);    // end position      
+        setg( buffer + buf4,     // beginning of putback area
+              buffer + buf4,     // read position
+              buffer + buf4);    // end position      
+//               buffer + buf4);    // end position      
         // ASSERT: both input & output capabilities will not be used together
     }
     int is_open() { return opened; }
