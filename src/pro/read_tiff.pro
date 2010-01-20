@@ -1,6 +1,7 @@
 ;$Id$
 
 function read_tiff, filename, red,green,blue,channels=channels,geotiff=geotiff,image_index=image_index,interleave=interleave,orientation=orientation,planarconfig=planarconfig,sub_rect=sub_rect,verbose=verbose
+  on_error, 2
 ;+
 ;
 ;

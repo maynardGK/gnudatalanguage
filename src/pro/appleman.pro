@@ -1,6 +1,6 @@
 ;$Id$
 pro AppleMan,xRange,yRange,RESULT=res
-
+  on_error, 2
 ;+
 ;
 ;

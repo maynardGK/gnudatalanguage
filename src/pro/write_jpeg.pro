@@ -3,6 +3,7 @@
 pro write_jpeg, filename, image,$
                 ORDER=ORDER,QUALITY=QUALITY, TRUE=TRUE,UNIT=UNIT,$
                 PROGRESSIVE=PROGRESSIVE
+  on_error, 2
 ;+
 ;
 ;

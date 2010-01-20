@@ -3,6 +3,7 @@
 pro read_jpeg, filename, unit=unit,image, colortable,buffer=buffer,$
               colors=colors,dither=dither,grayscale=grayscale,order=order,$
               true=true,two_pass_quantize=two_pass_quantize
+  on_error, 2
 ;+
 ;
 ;

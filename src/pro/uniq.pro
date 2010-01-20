@@ -66,18 +66,19 @@
 ;-
 
 function UNIQ, arr, index
+  on_error, 2
 
-nEl = n_elements( arr)
-if nEl le 1 then return,0
+  nEl = n_elements( arr)
+  if nEl le 1 then return,0
 
-if n_params() eq 1 then begin
+  if n_params() eq 1 then begin
     ix = where(arr ne shift(arr, -1))
     if ix[0] ne -1 then return, ix $
     else return, nEl-1
-endif else begin
+  endif else begin
     tmp = arr[ index]
     ix = where(tmp ne shift(tmp,-1))
     if ix[0] ne -1 then return, index[ix] $
     else return, nEl-1
-endelse
+  endelse
 end

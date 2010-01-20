@@ -4,6 +4,7 @@ pro write_bmp, filename, image,red, green, blue, $
                     FOUR_BIT=FOUR_BIT,$
                     IHDR=IHDR,HEADER_DEFINE=HEADER_DEFINE,$
                     RGB=RGB
+  on_error, 2
 ;+
 ;
 ;

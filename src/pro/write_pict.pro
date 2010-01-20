@@ -1,6 +1,7 @@
 ;$Id$
 
 pro write_pict, filename, image,red, green, blue
+  on_error, 2
 ;+
 ;
 ;

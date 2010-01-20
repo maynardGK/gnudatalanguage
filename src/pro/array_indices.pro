@@ -1,7 +1,7 @@
 ;$Id$
 
 function Array_Indices,a,ix
-
+  on_error, 2
 ;+
 ;
 ;

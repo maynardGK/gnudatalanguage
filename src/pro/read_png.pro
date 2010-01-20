@@ -1,6 +1,7 @@
 ;$Id$
 
 function read_png, filename, red,green,blue,order=order,verbose=verbose,transparent=transparent
+  on_error, 2
 ;+
 ;
 ;

@@ -59,6 +59,7 @@ function LMGR,CLIENTSERVER=cs,DEMO=demo,EMBEDDED=eb,$
               EXPIRE_DATE=expire,FORCE_DEMO=force,$
               INSTALL_NUM=install_num,LMHOSTID=hostid,$
               SITE_NOTICE=site_notice
+on_error, 2
 
 hostid = '000000000001'
 install_num = '00001'

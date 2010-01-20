@@ -1,6 +1,7 @@
 ;$Id$
 
 function read_bmp, filename, red, green, blue, rgb=rgb
+  on_error, 2
 ;+
 ;
 ;

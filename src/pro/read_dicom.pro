@@ -1,6 +1,7 @@
 ;$Id$
 
 function read_dicom, filename, red, green, blue, image_index=image_index
+  on_error, 2
 ;+
 ;
 ;

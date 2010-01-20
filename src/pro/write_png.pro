@@ -2,6 +2,7 @@
 
 pro write_png, filename, image,red, green, blue, $
                ORDER=ORDER,VERBOSE=VERBOSE,TRANSPARENT=TRANSPARENT
+  on_error, 2
 ;+
 ;
 ;

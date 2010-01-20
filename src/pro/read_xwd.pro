@@ -1,6 +1,7 @@
 ;$Id$
 
 function read_xwd, filename, red, green, blue
+  on_error, 2
 ;+
 ;
 ;
