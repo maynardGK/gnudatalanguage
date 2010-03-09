@@ -62,7 +62,7 @@ public:
 		return ref ? ref->ptr : 0;
 	}
 
-	T* get() const
+	 T* get() const
 	{
 		return ref ? ref->ptr : 0;
 	}
