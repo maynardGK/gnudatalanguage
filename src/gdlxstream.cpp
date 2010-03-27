@@ -39,11 +39,11 @@ void GDLXStream::Init()
     XCloseDisplay(display);
   }
 
-//    if( !plstreamInitCalled)
-   {
+//      if( !plstreamInitCalled)
+//    {
 		this->plstream::init();
-// 		plstreamInitCalled = true;
-	}
+//  		plstreamInitCalled = true;
+// 	}
 		
   //  set_stream(); // private
   plgpls( &pls);
@@ -62,10 +62,10 @@ void GDLXStream::EventHandler()
   if( !valid) return;
 
   // dummy call to get private function set_stream() called
-  char dummy;
-  gesc( &dummy);
-
-  plgpls( &pls);
+//   char dummy;
+//   gesc( &dummy);
+// 
+//   plgpls( &pls);
 
   XwDev *dev = (XwDev *) pls->dev;
 
