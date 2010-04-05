@@ -7,6 +7,7 @@
 
 // g++-4.3 needs this
 #include <cstdlib>
+#include <iomanip>
 
 #include "antlr/TreeParser.hpp"
 #include "antlr/ASTNULLType.hpp"
@@ -98,7 +99,8 @@ void TreeParser::reportWarning(const ANTLR_USE_NAMESPACE(std)string& s)
 void TreeParser::traceIndent()
 {
 	for( int i = 0; i < traceDepth; i++ )
-		ANTLR_USE_NAMESPACE(std)cout << " ";
+		ANTLR_USE_NAMESPACE(std)cout << "  ";
+	ANTLR_USE_NAMESPACE(std)cout << ANTLR_USE_NAMESPACE(std)setw(3) << traceDepth << ": ";
 }
 
 void TreeParser::traceIn(const char* rname, RefAST t)

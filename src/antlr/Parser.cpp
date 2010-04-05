@@ -7,6 +7,7 @@
 
 // g++-4.3 needs this
 #include <cstdlib>
+#include <iomanip>
 
 #include "antlr/Parser.hpp"
 
@@ -187,7 +188,8 @@ void Parser::reportWarning(const ANTLR_USE_NAMESPACE(std)string& s)
 void Parser::traceIndent()
 {
 	for( int i = 0; i < traceDepth; i++ )
-		ANTLR_USE_NAMESPACE(std)cout << " ";
+		ANTLR_USE_NAMESPACE(std)cout << "  ";
+	ANTLR_USE_NAMESPACE(std)cout << ANTLR_USE_NAMESPACE(std)setw(3) << traceDepth << " ";
 }
 
 void Parser::traceIn(const char* rname)
