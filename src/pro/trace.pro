@@ -1,5 +1,5 @@
 ;$Id$
-function trace, matrix,double_keyword=double_keyword
+function trace, matrix,double=double_keyword
 
 ;+
 ;

@@ -1,6 +1,6 @@
 ;$Id$
 
-function identity, n,double_keyword=double_keyword
+function identity, n,double=double_keyword
 
 ;+
 ;
