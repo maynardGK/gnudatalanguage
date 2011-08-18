@@ -95,12 +95,12 @@ if (not KEYWORD_SET(unit)) then mid=MAGICK_OPEN(filename)
 if (KEYWORD_SET(grayscale)) then begin
     MAGICK_QUANTIZE, mid, /GRAYSCALE
 endif else begin
-    if (KEYWORD_SET(colors)) then begin
-        if ((colors LT 8) OR (color GT 256)) then MESSAGE, "COLORS must be in the range 8 to 256"
-        if (KEYWORD_SET(two_pass_quantize)) then MESSAGE, "TWO_PASS_QUANTIZE not supported by ImageMagick."
-        MAGICK_QUANTIZE, mid, colors, dither=dither
-    endif
-endif
+   if (KEYWORD_SET(colors)) then begin
+      if ((colors LT 8) OR (color GT 256)) then MESSAGE, "COLORS must be in the range 8 to 256"
+      if (KEYWORD_SET(two_pass_quantize)) then MESSAGE, "TWO_PASS_QUANTIZE not supported by ImageMagick."
+      MAGICK_QUANTIZE, mid, colors, dither=dither
+   endif
+endelse
 ;
 ;;flip if order is set
 if (KEYWORD_SET(order)) then MAGICK_FLIP, mid
