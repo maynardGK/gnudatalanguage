@@ -89,6 +89,7 @@ if (N_PARAMS() EQ 0) then MESSAGE, "Incorrect number of arguments."
 ;
 if (STRLEN(filename) EQ 0) then MESSAGE, "Null filename not allowed."
 if ((FILE_INFO(filename)).exists EQ 0) then MESSAGE, "Error opening file. File: "+filename
+if (FILE_TEST(filename, /regular) EQ 0) then MESSAGE, "Not a regular File: "+filename
 ;
 mid=MAGICK_OPEN(filename)
 ;
