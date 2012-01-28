@@ -111,6 +111,18 @@ if (MAGICK_INDEXEDCOLOR(mid)) then begin
     image=MAGICK_READINDEXES(mid)
     MAGICK_READCOLORMAPRGB, mid, red, green, blue
     colortable=[[red],[green],[blue]]
+    ;;
+    ;; try to catch a problem in ImageMagick
+    ;; (should be renormalized in, but not, as is on 28/01/2012)
+    ;; bug report 3471918 (see min/max)
+    if (KEYWORD_SET(grayscale)) then begin
+       temp=image
+       for ii=0, N_ELEMENTS(red)-1 do begin
+          ok=WHERE(image EQ ii, nbp)
+          if nbp GT 0 then temp[OK]=red[ii]
+       endfor
+       image=temp
+    endif
 endif else begin
     image=MAGICK_READ(mid)
 endelse
