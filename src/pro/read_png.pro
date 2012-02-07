@@ -103,6 +103,16 @@ if (STRLEN(filename) EQ 0) then MESSAGE, "Null filename not allowed."
 if ((FILE_INFO(filename)).exists EQ 0) then MESSAGE, "Error opening file. File: "+filename
 if (FILE_TEST(filename, /regular) EQ 0) then MESSAGE, "Not a regular File: "+filename
 ;
+; testing whether the format is as expected
+;
+if ~MAGICK_PING(filename, 'PNG') then begin
+   MESSAGE, /continue, "PNG error: Not a PNG file:"
+   if MAGICK_PING(filename, 'JPEG') then MESSAGE, "seems to be a JPEG file"
+   if MAGICK_PING(filename, 'GIF') then MESSAGE, "seems to be a GIF file"
+   if MAGICK_PING(filename, 'PDF') then MESSAGE, "seems to be a PDF file"
+   MESSAGE, "unknown/untested format file"   
+endif
+;
 mid=MAGICK_OPEN(filename)
 ;
 ;;flip if order is set
