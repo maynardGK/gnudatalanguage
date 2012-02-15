@@ -4,6 +4,8 @@ pro READ_PNG, filename, image, red, green, blue, $
               order=order, verbose=verbose, transparent=transparent, $
               help=help, test=test
 ;
+ON_ERROR, 2
+;
 image=READ_PNG(filename, red, green, blue, $
               order=order, verbose=verbose, transparent=transparent, $
               help=help, test=test)
