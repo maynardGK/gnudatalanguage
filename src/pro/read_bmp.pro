@@ -67,6 +67,7 @@ function read_bmp, filename, red, green, blue, rgb=rgb
 ;
 ;-
 
+if (N_ELEMENTS(filename) GT 1) then MESSAGE, "Only one file at once !"
 
 mid=magick_open(filename)
 

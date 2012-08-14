@@ -59,6 +59,7 @@ pro read_pict, filename, image,red, green, blue
 ;
 ;-
 
+if (N_ELEMENTS(filename) GT 1) then MESSAGE, "Only one file at once !"
 
 mid=magick_open(filename)
 

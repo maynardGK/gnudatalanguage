@@ -80,6 +80,9 @@ function read_tiff, filename, red,green,blue,channels=channels,geotiff=geotiff,i
 ;
 ;
 ;-
+
+if (N_ELEMENTS(filename) GT 1) then MESSAGE, "Only one file at once !"
+
 f=filename
 if(keyword_set(IMAGE_INDEX)) then f=filename+"["+string(IMAGE_INDEX)+"]"
 mid=magick_open(f)
