@@ -41,37 +41,40 @@ LLkParser::LLkParser(TokenStream& lexer, int k_)
 void LLkParser::trace(const char* ee, const char* rname)
 {
 	//if(inputState->guessing>0) return;
+
+  // AC 2012-11-07
+  return;
 	
-	traceIndent();
-
-	cout << ee << rname << ((inputState->guessing>0)?";                  ?: ":";          <: ");
-
-	for (int i = 1; i <= k+3; i++)
+  traceIndent();
+  
+  cout << ee << rname << ((inputState->guessing>0)?";                  ?: ":";          <: ");
+  
+  for (int i = 1; i <= k+3; i++)
+    {
+      if (i != 1) {
+	//cout << ", ";
+	cout << " ";
+      }
+      //cout << "LA(" << i << ")==";
+      
+      string temp;
+      
+      try {
+	temp = LT(i)->getText().c_str();
+      }
+      catch( ANTLRException& ae )
 	{
-		if (i != 1) {
-			//cout << ", ";
-			cout << " ";
-		}
-		//cout << "LA(" << i << ")==";
-
-		string temp;
-
-		try {
-			temp = LT(i)->getText().c_str();
-		}
-		catch( ANTLRException& ae )
-		{
-			temp = "[error: ";
-			temp += ae.toString();
-			temp += ']';
-		}
-		if( temp == "\n")
-		  cout << "\\n";
-		else
-		  cout << temp;
+	  temp = "[error: ";
+	  temp += ae.toString();
+	  temp += ']';
 	}
-
-	cout << endl;
+      if( temp == "\n")
+	cout << "\\n";
+      else
+	cout << temp;
+    }
+  
+  cout << endl;
 }
 
 void LLkParser::traceIn(const char* rname)
