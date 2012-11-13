@@ -188,7 +188,7 @@ void Parser::reportWarning(const ANTLR_USE_NAMESPACE(std)string& s)
 void Parser::traceIndent()
 {
 	for( int i = 0; i < traceDepth; i++ )
-		ANTLR_USE_NAMESPACE(std)cout << "  ";
+		ANTLR_USE_NAMESPACE(std)cout << " ";
 	ANTLR_USE_NAMESPACE(std)cout << ANTLR_USE_NAMESPACE(std)setw(3) << traceDepth << " ";
 }
 
