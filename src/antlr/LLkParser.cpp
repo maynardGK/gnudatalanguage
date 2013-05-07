@@ -40,7 +40,7 @@ LLkParser::LLkParser(TokenStream& lexer, int k_)
 
 void LLkParser::trace(const char* ee, const char* rname)
 {
-  //if(inputState->guessing>0) return;
+  if(inputState->guessing>0) return;
 	
   traceIndent();
   
