@@ -12,7 +12,9 @@
 #include <antlr/AST.hpp>
 #include <antlr/ASTArray.hpp>
 #include <antlr/ASTPair.hpp>
-
+#ifdef __PATHCC__
+#include <iostream>
+#endif
 #include <utility>
 
 #ifdef ANTLR_CXX_SUPPORTS_NAMESPACE
