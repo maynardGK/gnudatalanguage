@@ -95,7 +95,7 @@ if (FILE_TEST(filename, /regular) EQ 0) then MESSAGE, "Not a regular File: "+fil
 ;
 ; testing whether the format is as expected
 ;
-if ~MAGICK_PING(filename, 'JPEG') then begin
+if ( ~MAGICK_PING(filename, 'JPEG') and ~MAGICK_PING(filename, 'JNG') )then begin
    MESSAGE, /continue, "JPEG error: Not a JPEG file:"
    if MAGICK_PING(filename, 'PNG') then MESSAGE, "seems to be a PNG file"
    if MAGICK_PING(filename, 'GIF') then MESSAGE, "seems to be a GIF file"
