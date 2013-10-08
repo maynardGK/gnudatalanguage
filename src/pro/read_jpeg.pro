@@ -120,7 +120,7 @@ endif else begin
 endelse
 ;
 ;;flip if order is set
-if (KEYWORD_SET(order)) then MAGICK_FLIP, mid
+if (KEYWORD_SET(order) or !ORDER eq 1L) then MAGICK_FLIP, mid
 ;
 if (MAGICK_INDEXEDCOLOR(mid)) then begin
     image=MAGICK_READINDEXES(mid)
