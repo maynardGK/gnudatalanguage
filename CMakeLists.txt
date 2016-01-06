@@ -711,7 +711,7 @@ if(PYTHON OR PYTHON_MODULE)
 		find_library(PYTHONLIBS 
                   NAMES python${PYTHONVERSION}
                   PATHS ${PYTHONDIR} 
-                  PATH_SUFFIXES lib lib/python${PYTHONVERSION}/config 
+                  PATH_SUFFIXES lib lib/python${PYTHONVERSION}/config lib/python${PYTHONVERSION}/config-x86_64-linux-gnu/
                   NO_DEFAULT_PATH NO_CMAKE_PATH
                 )
                 string(COMPARE NOTEQUAL "${PYTHONLIBS}" "PYTHONLIBS-NOTFOUND" PYTHONLIBS_FOUND) 
