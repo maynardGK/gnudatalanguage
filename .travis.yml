@@ -41,6 +41,10 @@ before_install:
     plplot12-driver-xwin
     pslib-dev
 
+env:
+  - SYSTEM_ANTLR=YES
+  - SYSTEM_ANTLR=NO
+
 before_script:
   - mkdir build
   - cd build
@@ -48,6 +52,7 @@ before_script:
     cmake ..
     -DPYTHON=YES -DPYTHONVERSION=2.7 -DPYTHONDIR=/usr
     -DFFTW=YES -DWXWIDGETS=YES -DGRIB=YES -DUDUNITS=YES -DPSLIB=YES
+    -DSYSTEM_ANTLR=${SYSTEM_ANTLR}
 
 script:
   - make VERBOSE=1 && make check
