@@ -1,0 +1,53 @@
+sudo: required
+dist: trusty
+
+language: c++
+
+addons:
+  apt:
+    packages:
+      - cmake
+      - libantlr-dev
+      - libeigen3-dev
+      - libfftw3-dev
+      - libgraphicsmagick++1-dev
+      - libgrib-api-dev
+      - libgsl0-dev
+      - libhdf4-alt-dev
+      - libhdf5-serial-dev
+      - libncurses5-dev
+      - libnetcdf-dev
+      - libplplot-dev
+      - libreadline-dev
+      - libudunits2-dev
+      - libwxgtk3.0-dev
+      - plplot12-driver-xwin
+      - pslib-dev
+      - python-dev
+      - python-numpy
+      - xauth
+      - xvfb
+      - zlib1g-dev
+
+compiler:
+  - gcc
+
+before_install:
+  - sudo apt-get update -qq
+  - >-
+    sudo apt-get install -y
+    libplplot-dev
+    libwxgtk3.0-dev
+    plplot12-driver-xwin
+    pslib-dev
+
+before_script:
+  - mkdir build
+  - cd build
+  - >-
+    cmake ..
+    -DPYTHON=YES -DPYTHONVERSION=2.7 -DPYTHONDIR=/usr
+    -DFFTW=YES -DWXWIDGETS=YES -DGRIB=YES -DUDUNITS=YES -DPSLIB=YES
+
+script:
+  - make VERBOSE=1 && make check
