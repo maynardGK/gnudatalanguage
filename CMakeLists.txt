@@ -761,6 +761,19 @@ if(PYTHON OR PYTHON_MODULE)
                 "(suitable Fedora package: python-devel)\n"
 		"${PYTHONMSG} ${PYTHON_MODULEMSG}")
 	endif(PYTHONLIBS_FOUND)
+	if(PYTHON_MODULE)
+		find_package( PythonInterp REQUIRED )
+		execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
+		  "import site, sys; sys.stdout.write(site.PREFIXES[-1])"
+		  OUTPUT_VARIABLE PYTHON_PREFIX)
+		file( TO_CMAKE_PATH "${PYTHON_PREFIX}" PYTHON_PREFIX)
+		execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
+		  "import site, sys; sys.stdout.write(site.getsitepackages()[-1])"
+		  OUTPUT_VARIABLE PYTHON_SITE_DIR)
+		file( TO_CMAKE_PATH "${PYTHON_SITE_DIR}" PYTHON_SITE_DIR )
+		string( REGEX REPLACE "^${PYTHON_PREFIX}/" ""
+		  PYTHON_SITE_DIR "${PYTHON_SITE_DIR}")
+	endif(PYTHON_MODULE)
 endif(PYTHON OR PYTHON_MODULE)
 
 # udunits
@@ -994,6 +1007,13 @@ Files generated     ${CMAKE_GENERATOR}
 GDL output          ${GDLLOCATION}
 Installation prefix ${CMAKE_INSTALL_PREFIX}
 C++ compiler        ${CMAKE_CXX_COMPILER} ${FLAGS}")
+message("")
+message(STATUS "Build targets")
+if (PYTHON_MODULE)
+  message("Python module   ON ${PYTHON_SITE_DIR}")
+else(PYTHON_MODULE)
+  message("Python module   OFF")
+endif (PYTHON_MODULE)
 message("")
 message(STATUS "Options")
 if(OPENMP AND OPENMP_FOUND)
