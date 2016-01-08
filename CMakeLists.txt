@@ -30,6 +30,8 @@ include(FindPackageHandleStandardArgs)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/CMakeModules)
 
 #### Default cached values
+set(SHARED_LIB    OFF CACHE BOOL "GDL: Build shared library ?")
+set(GDL_EXECUTABLE ON CACHE BOOL "GDL: Build GDL executable ?")
 set(PYTHON_MODULE OFF CACHE BOOL "GDL: Build GDL as a Python module ?")
 
 set(SYSTEM_ANTLR  OFF CACHE BOOL "GDL: Use system provided antlr lib ?")
@@ -931,9 +933,10 @@ if(X11)
 	endif(WIN32 AND NOT CYGWIN)
 endif(X11)
 add_subdirectory(src)
-if(NOT PYTHON_MODULE)
+
+if (GDL_EXECUTABLE)
 	add_subdirectory(testsuite)
-endif(NOT PYTHON_MODULE)
+endif (GDL_EXECUTABLE)
 
 install(FILES ${CMAKE_SOURCE_DIR}/AUTHORS ${CMAKE_SOURCE_DIR}/README DESTINATION ${CMAKE_INSTALL_PREFIX}/${GDL_DATA_DIR})
 install(FILES ${CMAKE_SOURCE_DIR}/doc/gdl.1 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1)
@@ -943,14 +946,14 @@ configure_file(${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 # create a link src/gdl -> ${BUILD}/.../gdl
 # for windows, just copy the file
-if(NOT PYTHON_MODULE)
+if (GDL_EXECUTABLE)
 	get_target_property(GDLLOCATION gdl LOCATION)
 	if(WIN32)
 	add_custom_target(copy_gdl ALL ${CMAKE_COMMAND} -E copy ${GDLLOCATION} ${CMAKE_SOURCE_DIR}/src/gdl DEPENDS gdl)
 	else(WIN32)
 	add_custom_target(symlink_gdl ALL ${CMAKE_COMMAND} -E create_symlink ${GDLLOCATION} ${CMAKE_SOURCE_DIR}/src/gdl DEPENDS gdl)
 	endif(WIN32)
-endif(NOT PYTHON_MODULE)
+endif (GDL_EXECUTABLE)
 
 # display macro
 macro(MODULE MOD NAME)
@@ -960,14 +963,6 @@ macro(MODULE MOD NAME)
 		message("${NAME}         OFF")
 	endif(${MOD})
 endmacro(MODULE)
-
-# python
-if(PYTHON_MODULE)
-	set(BUILDTYPE "Python Module")
-else(PYTHON_MODULE)
-	set(BUILDTYPE "Standalone")
-endif(PYTHON_MODULE)
-
 
 #
 IF(NOT CMAKE_BUILD_TYPE)
@@ -1003,7 +998,7 @@ endif(CMAKE_BUILD_TYPE STREQUAL None OR NOT CMAKE_BUILD_TYPE)
 message(STATUS
 "Summary
 
-GDL - GNU DATA LANGUAGE [${BUILDTYPE}]
+GDL - GNU DATA LANGUAGE
 System              ${CMAKE_HOST_SYSTEM}
 Files generated     ${CMAKE_GENERATOR}
 GDL output          ${GDLLOCATION}
@@ -1011,6 +1006,8 @@ Installation prefix ${CMAKE_INSTALL_PREFIX}
 C++ compiler        ${CMAKE_CXX_COMPILER} ${FLAGS}")
 message("")
 message(STATUS "Build targets")
+message("Shared library  ${SHARED_LIB}")
+message("GDL executable  ${GDL_EXECUTABLE}" )
 if (PYTHON_MODULE)
   message("Python module   ON ${PYTHON_SITE_DIR}")
 else(PYTHON_MODULE)
