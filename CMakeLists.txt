@@ -32,6 +32,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/CMakeModules)
 #### Default cached values
 set(PYTHON_MODULE OFF CACHE BOOL "GDL: Build GDL as a Python module ?")
 
+set(SYSTEM_ANTLR  OFF CACHE BOOL "GDL: Use system provided antlr lib ?")
+
 set(X11 ON CACHE BOOL "GDL: Enable X11 ?") 
 set(X11DIR "" CACHE PATH "GDL: Specify X11 directory tree")
 
@@ -1060,6 +1062,7 @@ module(OLDPLPLOT "Old Plplot ")
 module(READLINE  "Readline   ")
 module(GSL       "GSL        ")
 module(ZLIB      "Zlib       ")
+module(SYSTEM_ANTLR "System antlr")
 if(NOT WIN32)
   module(CURSES    "(N)curses    ")
 endif(NOT WIN32)
