@@ -791,7 +791,7 @@ endif(UDUNITS)
 # -DEIGEN3DIR=DIR
 if(EIGEN3)
       set(CMAKE_PREFIX_PATH ${EIGEN3DIR})
-      find_package(Eigen3 3.0.0 QUIET)
+      find_package(Eigen3 3.2.4 QUIET)
       if(EIGEN3_TOO_OLD)
 	# on iCore 3/5/7 we must have Eigen >=3.2.4 to avoid fatal error in "test_matrix_multiply.pro"
 	message(FATAL_ERROR "\nEIGEN3 is required but the version found is TOO OLD."
