@@ -41,13 +41,14 @@ before_install:
     plplot12-driver-xwin
     pslib-dev
     libeigen3-dev
+  - export PATH=/usr/bin:/bin
 
 before_script:
   - mkdir build
   - cd build
   - >-
     cmake ..
-    -DPYTHON=YES -DPYTHONVERSION=2.7 -DPYTHONDIR=/usr
+    -DPYTHON=YES
     -DFFTW=YES -DWXWIDGETS=YES -DGRIB=YES -DUDUNITS=YES -DPSLIB=YES
 
 script:
