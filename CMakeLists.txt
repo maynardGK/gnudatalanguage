@@ -174,10 +174,6 @@ check_library_exists(m nexttoward "" HAVE_NEXTTOWARD)
 # mpi
 check_include_file(mpi.h HAVE_MPI_H)
 
-# SA: whithout it compilation of antlr fails if there's a conflicting 
-#     version of antlr in system-wide directories
-include_directories(src)
-
 if (NOT WIN32)
 	# Ncurses MANDATORY for readline on POSIX
 	# -DNCURSESDIR=DIR
