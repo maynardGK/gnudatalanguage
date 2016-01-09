@@ -25,7 +25,6 @@ addons:
       - pslib-dev
       - python-dev
       - python-numpy
-      - python-pytest
       - xauth
       - xvfb
       - zlib1g-dev
@@ -41,6 +40,7 @@ before_install:
     libwxgtk3.0-dev
     plplot12-driver-xwin
     pslib-dev
+    python-pytest
 
 env:
   - SHARED_LIB=YES SYSTEM_ANTLR=YES
@@ -59,4 +59,4 @@ before_script:
     -DSYSTEM_ANTLR=${SYSTEM_ANTLR}
 
 script:
-  - make VERBOSE=1 && make check
+  - make VERBOSE=1 && CTEST_OUTPUT_ON_FAILURE=1 make check
