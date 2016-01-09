@@ -25,6 +25,7 @@ addons:
       - pslib-dev
       - python-dev
       - python-numpy
+      - python-pytest
       - xauth
       - xvfb
       - zlib1g-dev
