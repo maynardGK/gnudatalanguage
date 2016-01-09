@@ -1,5 +1,6 @@
 set(BASE_SOURCE ${CMAKE_SOURCE_DIR})
 set(BASE_BINARY ${CMAKE_BINARY_DIR})
+if (GDL_EXECUTABLE)
 # write the test launcher
 if(WIN32 AND NOT CYGWIN)
 set(LAUNCH
@@ -103,3 +104,11 @@ foreach(TEST ${TESTS})
 	add_test(${TEST} ${LAUNCHTESTLOCATION} ${TEST})
 	set_tests_properties(${TEST} PROPERTIES SKIP_RETURN_CODE 77) # autoconf's setting
 endforeach(TEST TESTS)
+endif (GDL_EXECUTABLE)
+if (PYTHON_MODULE)
+  add_test(Python-GDL ${CMAKE_SOURCE_DIR}/testsuite/test-GDL.py)
+  set_tests_properties(Python-GDL PROPERTIES
+  	               ENVIRONMENT "PYTHONPATH=${BASE_BINARY}/src/")
+  set_tests_properties(Python-GDL PROPERTIES
+  	               ENVIRONMENT "LD_LIBRARY_PATH=${BASE_BINARY}/src/")
+endif(PYTHON_MODULE)

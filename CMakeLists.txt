@@ -934,9 +934,7 @@ if(X11)
 endif(X11)
 add_subdirectory(src)
 
-if (GDL_EXECUTABLE)
-	add_subdirectory(testsuite)
-endif (GDL_EXECUTABLE)
+add_subdirectory(testsuite)
 
 install(FILES ${CMAKE_SOURCE_DIR}/AUTHORS ${CMAKE_SOURCE_DIR}/README DESTINATION ${CMAKE_INSTALL_PREFIX}/${GDL_DATA_DIR})
 install(FILES ${CMAKE_SOURCE_DIR}/doc/gdl.1 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1)
