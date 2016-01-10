@@ -52,4 +52,4 @@ before_script:
     -DFFTW=YES -DWXWIDGETS=YES -DGRIB=YES -DUDUNITS=YES -DPSLIB=YES
 
 script:
-  - make VERBOSE=1 && make check
+  - make VERBOSE=1 && CTEST_OUTPUT_ON_FAILURE=1 make check
