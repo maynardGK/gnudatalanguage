@@ -107,8 +107,8 @@ endforeach(TEST TESTS)
 endif (GDL_EXECUTABLE)
 if (PYTHON_MODULE)
   add_test(Python-GDL ${CMAKE_SOURCE_DIR}/testsuite/test-GDL.py)
-  set_tests_properties(Python-GDL PROPERTIES
-  	               ENVIRONMENT "PYTHONPATH=${BASE_BINARY}/src/")
-  set_tests_properties(Python-GDL PROPERTIES
-  	               ENVIRONMENT "LD_LIBRARY_PATH=${BASE_BINARY}/src/")
+  set_property(TEST Python-GDL PROPERTY
+  	               ENVIRONMENT PYTHONPATH=${BASE_BINARY}/src/)
+  set_property(TEST Python-GDL APPEND PROPERTY
+  	               ENVIRONMENT LD_LIBRARY_PATH=${BASE_BINARY}/src/)
 endif(PYTHON_MODULE)
