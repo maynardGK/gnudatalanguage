@@ -1,0 +1,51 @@
+sudo: required
+dist: trusty
+
+language: c++
+
+addons:
+  apt:
+    packages:
+      - cmake
+      - libantlr-dev
+      - libfftw3-dev
+      - libgraphicsmagick++1-dev
+      - libgrib-api-dev
+      - libgsl0-dev
+      - libhdf4-alt-dev
+      - libhdf5-serial-dev
+      - libncurses5-dev
+      - libnetcdf-dev
+      - libplplot-dev
+      - libreadline-dev
+      - libudunits2-dev
+      - libwxgtk3.0-dev
+      - plplot12-driver-xwin
+      - pslib-dev
+      - python-dev
+      - python-numpy
+      - xauth
+      - xvfb
+      - zlib1g-dev
+
+compiler:
+  - gcc
+
+before_install:
+  - sudo add-apt-repository ppa:olebole/astro-trusty -y
+  - sudo apt-get update -qq
+  - >-
+    sudo apt-get install -y
+    libwxgtk3.0-dev
+    plplot12-driver-xwin
+    libeigen3-dev
+  - export PATH=/usr/bin:/bin
+
+before_script:
+  - patch -p1 < .travis-ci.diff
+  - mkdir build
+  - cd build
+  - cmake .. -DGRIB=YES -DUDUNITS=YES
+
+script:
+  - make VERBOSE=1 && CTEST_OUTPUT_ON_FAILURE=1 make check
