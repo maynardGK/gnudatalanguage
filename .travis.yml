@@ -42,7 +42,7 @@ before_install:
   - export PATH=/usr/bin:/bin
 
 before_script:
-  - patch -p1 < .travis-ci.diff
+  - sed 's/'`cat .travis-ci.failing-tests | tr \\\\n \| | tr -d " " | sed s/\\|/'\\\'\|/g`'endo-f//' -i testsuite/Makefile.am 
   - mkdir build
   - cd build
   - cmake .. -DGRIB=YES -DUDUNITS=YES
