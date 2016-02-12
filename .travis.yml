@@ -49,3 +49,7 @@ before_script:
 
 script:
   - make VERBOSE=1 && CTEST_OUTPUT_ON_FAILURE=1 make check
+
+notifications:
+  email:
+    - github@liska.ath.cx
