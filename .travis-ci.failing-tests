@@ -6,6 +6,7 @@ test_congrid.pro
 test_device.pro
 test_execute.pro
 test_extra_keywords.pro
+test_hdf5.pro
 test_moment.pro
 test_plot_oo.pro
 test_random.pro
