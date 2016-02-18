@@ -1,7 +1,5 @@
 test_bug_3275334.pro
 test_bug_3285659.pro
-test_call_function_extra.pro
-test_call_procedure_extra.pro
 test_congrid.pro
 test_device.pro
 test_execute.pro
