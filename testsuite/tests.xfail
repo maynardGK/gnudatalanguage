@@ -2,10 +2,13 @@ test_bug_3275334.pro
 test_bug_3285659.pro
 test_congrid.pro
 test_device.pro
+test_execute.pro
 test_extra_keywords.pro
+test_hdf5.pro
 test_moment.pro
 test_plot_oo.pro
 test_random.pro
 test_routine_names.pro
+test_sem.pro
 test_tv.pro
 test_window_background.pro 
