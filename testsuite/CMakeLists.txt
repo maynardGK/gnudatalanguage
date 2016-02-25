@@ -29,6 +29,10 @@ char *tmp = (char *)malloc( sizeof(char) * (strlen(\"${BASE_BINARY}/src/gdl -qui
 sprintf(tmp, \"${BASE_BINARY}/src/gdl.exe -quiet -e %s\", v[1]);
 //int rtn = CreateProcess(NULL, tmp, NULL, NULL, TRUE, 0, NULL, NULL, &startupInfo, &processInformation);
 int rtn = system(tmp);
+char cmd[512];
+snprintf(cmd, 511, \"fgrep -q %s.pro ${BASE_SOURCE}/testsuite/tests.xfail\",  v[1]);
+int xfail = (system(cmd) == 0);
+printf(\"%i: %s\n\", xfail, cmd)
 
 if (rtn == 77) {
     printf(\"TEST SKIPPED\");
@@ -37,16 +41,16 @@ if (rtn == 77) {
     printf(\"LAUNCH PROCESS FAILED\");
     exit(1);
 } else if (rtn == 0) {
+    if (xfail) {
+      printf(\"TEST XFAIL but successful\");
+    }
     exit(0);
 } else {
-    char cmd[512];
-    snprintf(cmd, 511, \"fgrep -q %s.pro ${BASE_SOURCE}/testsuite/tests.xfail\",
-             v[1]);
-    int res = system(cmd);
-    if (res) {
-      exit(rtn);
-    } else {
+    if (xfail) {
+      printf(\"TEST XFAILED\");
       exit(0);
+    } else {
+      exit(rtn);
     }
 }
 }
