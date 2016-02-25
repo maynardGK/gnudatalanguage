@@ -36,8 +36,18 @@ if (rtn == 77) {
 } if (rtn == -1 || rtn == 127) {
     printf(\"LAUNCH PROCESS FAILED\");
     exit(1);
+} else if (rtn == 0) {
+    exit(0);
 } else {
-    exit(rtn);
+    char cmd[512];
+    snprintf(cmd, 511, \"fgrep -q %s.pro ${BASE_SOURCE}/testsuite/tests.xfail\",
+             v[1]);
+    int res = system(cmd);
+    if (res) {
+      exit(rtn);
+    } else {
+      exit(0);
+    }
 }
 }
 ")
