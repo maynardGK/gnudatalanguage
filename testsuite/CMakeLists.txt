@@ -79,7 +79,15 @@ if(child_pid == 0) {
     printf(\"TEST EXITED FROM SIGNAL %d\", WTERMSIG(child_status));
     exit(1);
   } else {
-    exit(WEXITSTATUS(child_status));
+    char cmd[512];
+    snprintf(cmd, 511, \"fgrep -q %s.pro ${BASE_SOURCE}/testsuite/tests.xfail\",
+             v[1]);
+    int res = system(cmd);
+    if (res) {
+      exit(WEXITSTATUS(child_status));
+    } else {
+      exit(0);
+    }
   }
 }
 }
