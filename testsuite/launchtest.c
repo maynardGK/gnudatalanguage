@@ -27,7 +27,7 @@ int rtn = system(tmp);
 char cmd[512];
 snprintf(cmd, 511, "fgrep -q %s.pro ${BASE_SOURCE}/testsuite/tests.xfail",  v[1]);
 int xfail = (system(cmd) == 0);
-printf("%i: %s\n", xfail, cmd)
+printf("%i: %s\n", xfail, cmd);
 
 if (rtn == 77) {
     printf("TEST SKIPPED");
