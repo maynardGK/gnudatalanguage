@@ -21,3 +21,10 @@ echo "exit,status=1" | \
 #  $1/src/gdl -quiet -e `echo $2 | cut -d/ -f2 | cut -d. -f1` &> /dev/null
 IDL_PATH="" IDL_STARTUP="" GDL_STARTUP="" GDL_PATH=+$2/src/pro:$1/testsuite \
   $2/src/gdl -quiet -e `echo $2 | cut -d/ -f2 | cut -d. -f1` &> /dev/null
+ret=$?
+if [ $ret -ne 0 ]; then
+    if fgrep -q  `echo $2 | cut -d/ -f2` $1/testsuite/tests.xfail ; then
+	exit 77
+    fi
+fi
+exit $ret
